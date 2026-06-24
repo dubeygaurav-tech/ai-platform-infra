@@ -1,0 +1,17 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: inference-scaler
+  namespace: ai-workloads
+spec:
+  scaleTargetRef:
+    name: inference-server # Matches your Deployment name
+  minReplicaCount: 0       # Scale to zero when idle
+  maxReplicaCount: 5       # Max pods during heavy load
+  triggers:
+  - type: prometheus      # Or 'rabbitmq', 'kafka', 'aws-sqs', etc.
+    metadata:
+      serverAddress: http://prometheus-operated.monitoring.svc.cluster.local:9090
+      metricName: http_requests_per_second
+      threshold: '10'
+      query: sum(rate(http_requests_total{pod="inference-server"}[1m]))
