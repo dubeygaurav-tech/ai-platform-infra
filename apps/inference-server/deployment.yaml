@@ -6,7 +6,6 @@ metadata:
   labels:
     app: vllm-inference
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: vllm-inference
