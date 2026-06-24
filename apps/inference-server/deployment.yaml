@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: vllm-inference
+    terminationGracePeriodSeconds: 60
     spec:
       containers:
       - name: vllm-container
