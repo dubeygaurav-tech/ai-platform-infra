@@ -1,3 +1,5 @@
+echo "THIS IS THE BOOTSTRAP SCRIPT WHICH SHOULD RUN ONLY ONCE WHEN YOU NEED TO CONFIGURE THE CLUSTER FOR THE FIRST TIME"
+
 # 1. Create necessary namespaces
 kubectl create namespace argocd
 kubectl create namespace external-secrets
