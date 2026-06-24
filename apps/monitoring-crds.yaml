@@ -8,11 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/prometheus-community/helm-charts
-    path: manifests/monitoring-crds
+    repoURL: 'https://github.com/dubeygaurav-tech/ai-platform-infra'
     targetRevision: HEAD
-    directory:
-      recurse: true
+    path: manifests/monitoring-crds
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
