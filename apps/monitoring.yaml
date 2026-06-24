@@ -4,15 +4,17 @@ metadata:
   name: monitoring
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
   source:
+    chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 60.0.0
-    chart: kube-prometheus-stack
     helm:
       values: |
+        crds:
+          enabled: false # <--- Disable CRD management in Helm
         grafana:
           adminPassword: "prom-operator"
   destination:
