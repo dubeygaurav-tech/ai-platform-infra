@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/dubeygaurav-tech/ai-platform-infra'
     targetRevision: HEAD
-    path: manifests/monitoring/ # Look here for raw YAMLs
+    path: manifests/monitoring # Look here for raw YAMLs
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
