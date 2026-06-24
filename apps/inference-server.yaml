@@ -8,7 +8,13 @@ spec:
   source:
     repoURL: 'https://github.com/dubeygaurav-tech/ai-platform-infra'
     targetRevision: HEAD
-    path: manifests/inference-server/ # Look here for raw YAMLs
+    path: manifests/inference-server/ 
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: ai-workloads
+    namespace: ai-workloads # Ensure this matches your target
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true  # <--- THIS IS REQUIRED
