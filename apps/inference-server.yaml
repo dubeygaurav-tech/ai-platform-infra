@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: inference-server
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
 spec:
   project: default
   source:
@@ -19,4 +21,3 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - PruneLast=true
-    - Replace=true # <--- THIS IS REQUIRED
