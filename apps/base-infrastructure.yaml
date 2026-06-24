@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: base-infrastructure
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/dubeygaurav-tech/ai-platform-infra'
+    targetRevision: HEAD
+    path: clusters/kind-cluster/ # Where your base-namespaces.yaml lives
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
